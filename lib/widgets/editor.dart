@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_admin/modes/food.dart';
 
 class FoodEditor extends StatefulWidget {
   FoodEditor(
@@ -56,5 +57,36 @@ class FoodEditorState extends State<FoodEditor> {
             controller: widget.nameController,
           )
         ]));
+  }
+}
+
+class CategoryEditor extends StatefulWidget {
+  const CategoryEditor(
+      {super.key, required this.nameController, required this.keyState});
+  final TextEditingController nameController;
+  final GlobalKey<FormState> keyState;
+  @override
+  State<StatefulWidget> createState() {
+    return CategoryEditorState();
+  }
+}
+
+class CategoryEditorState extends State<CategoryEditor> {
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+        child: Column(
+      children: [
+        TextFormField(
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "分类名字不能为空";
+            }
+            return null;
+          },
+          controller: widget.nameController,
+        )
+      ],
+    ));
   }
 }
