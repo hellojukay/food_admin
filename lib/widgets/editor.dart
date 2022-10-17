@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_admin/modes/food.dart';
 
 class FoodEditor extends StatefulWidget {
   FoodEditor(

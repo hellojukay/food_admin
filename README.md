@@ -1,5 +1,7 @@
 # food_admin
 
+![demo.png](demo.png)
+
 A new Flutter project.
 
 ## Getting Started
