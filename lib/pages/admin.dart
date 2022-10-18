@@ -296,7 +296,7 @@ class AdminState extends State<Admin> {
         ],
       ),
       bottomNavigationBar: Material(
-        color: const Color(0xffff8906),
+        color: Theme.of(context).primaryColor,
         child: InkWell(
           onTap: () {
             //print('called on tap');
