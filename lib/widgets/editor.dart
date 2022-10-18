@@ -60,13 +60,16 @@ class FoodEditorState extends State<FoodEditor> {
 }
 
 class CategoryEditor extends StatefulWidget {
-  const CategoryEditor(
-      {super.key, required this.nameController, required this.keyState});
+  CategoryEditor({super.key, required this.nameController});
   final TextEditingController nameController;
-  final GlobalKey<FormState> keyState;
+  final GlobalKey<FormState> keyState = GlobalKey<FormState>();
   @override
   State<StatefulWidget> createState() {
     return CategoryEditorState();
+  }
+
+  bool validate() {
+    return keyState.currentState!.validate();
   }
 }
 
@@ -74,18 +77,20 @@ class CategoryEditorState extends State<CategoryEditor> {
   @override
   Widget build(BuildContext context) {
     return Form(
+        key: widget.keyState,
         child: Column(
-      children: [
-        TextFormField(
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return "分类名字不能为空";
-            }
-            return null;
-          },
-          controller: widget.nameController,
-        )
-      ],
-    ));
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "分类名字不能为空";
+                }
+                return null;
+              },
+              controller: widget.nameController,
+            )
+          ],
+        ));
   }
 }
